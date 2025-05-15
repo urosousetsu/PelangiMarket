@@ -18,6 +18,7 @@
 <body class="bg-gray-100">
     {{-- Include Navbar --}}
     @include('components.navbar')
+    @include('components.wa-btn')
 
     {{-- Main Content --}}
     <main class="container mx-auto py-6">
