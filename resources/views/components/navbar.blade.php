@@ -37,12 +37,12 @@
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                         aria-labelledby="dropdownJenisMotorButton">
                         <li>
-                            <a href="{{ url('/jenis-motor/beat') }}"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Beat</a>
+                            <a href="{{ url('/jenis-motor/vario') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">vario</a>
                         </li>
                         <li>
-                            <a href="{{ url('/jenis-motor/vario') }}"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Vario</a>
+                            <a href="{{ url('/jenis-motor/beat') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">beat</a>
                         </li>
                     </ul>
                 </div>
