@@ -21,7 +21,7 @@
     @include('components.wa-btn')
 
     {{-- Main Content --}}
-    <main class="container mx-auto py-6">
+    <main class="container mx-auto">
         @yield('content')
     </main>
 

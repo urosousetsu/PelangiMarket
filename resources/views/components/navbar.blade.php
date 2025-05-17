@@ -1,5 +1,5 @@
 {{-- filepath: resources/views/components/navbar.blade.php --}}
-<nav class="bg-red-600 relative z-50">
+<nav class="bg-red-600 sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center py-3 px-4">
         {{-- Logo --}}
         <div class="flex items-center">

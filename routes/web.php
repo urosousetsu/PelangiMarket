@@ -30,3 +30,7 @@ Route::get('/jenis-motor/beat', function () {
 Route::get('/jenis-motor/vario', function () {
     return view('vario');
 });
+
+Route::get('/keranjang', function () {
+    return view('keranjang');
+})->middleware('auth'); // Hanya bisa diakses jika sudah login
