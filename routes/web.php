@@ -33,4 +33,12 @@ Route::get('/jenis-motor/vario', function () {
 
 Route::get('/keranjang', function () {
     return view('keranjang');
-})->middleware('auth'); // Hanya bisa diakses jika sudah login
+})->middleware('auth'); 
+
+Route::get('/suku-cadang', function () {
+    return view('sparepart');
+})->middleware('auth'); 
+
+Route::get('/aksesoris', function () {
+    return view('accessories');
+})->middleware('auth'); 
