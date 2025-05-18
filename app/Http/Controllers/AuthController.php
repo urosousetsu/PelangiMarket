@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -13,29 +14,31 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
 
         User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
+            'name' => $request->name,
+            'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
         // Redirect ke halaman login setelah register berhasil
-        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+        notify()->success('Registrasi berhasil! Silakan login.');
+        return redirect()->route('login');
     }
 
     public function login(Request $request)
     {
         $request->validate([
-            'email'    => 'required|string|email',
+            'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
+            drakify('success');
             return redirect('/'); // Redirect ke homepage setelah login
         }
 
