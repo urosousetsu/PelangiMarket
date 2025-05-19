@@ -10,7 +10,8 @@
                     @foreach ($cart as $key => $item)
                         <div class="cart-item flex items-center justify-between p-4 border rounded-lg">
                             <div class="flex items-center gap-4">
-                                <img src="" alt="Produk A" class="w-16 h-16 object-cover rounded-lg ml-4">
+                                <img src="/assets/products_img/{{ $item['image'] }}" alt="{{ $item['image'] }}"
+                                    class="w-16 h-16 object-cover rounded-lg ml-4">
                                 <div>
                                     <p class="font-medium">{{ $item['name'] }}</p>
                                     <p class="text-sm text-gray-500">Rp <span class="item-price"

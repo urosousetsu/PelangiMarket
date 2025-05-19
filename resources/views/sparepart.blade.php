@@ -13,7 +13,7 @@
             <form action="{{ route('store-cart', $data->id) }}" method="POST">
                 @csrf
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
-                    <img class="w-full h-48 object-cover" src="https://via.placeholder.com/300x200"
+                    <img class="w-full h-48 object-cover" src="/assets/products_img/{{ $data->image }}"
                         alt="{{ $data->image }}" />
                     <div class="p-4 flex flex-col flex-grow">
                         <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ $data->name }}</h2>
