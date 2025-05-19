@@ -38,6 +38,4 @@ Route::get('/keranjang', function () {
 
 Route::get('/suku-cadang', [ProductController::class, 'fetchSukuCadang'])->middleware('auth')->name('suku-cadang');
 
-Route::get('/aksesoris', function () {
-    return view('accessories');
-})->middleware('auth');
+Route::get('/aksesoris', [ProductController::class, 'fetchAksesoris'])->middleware('auth')->name('aksesoris');

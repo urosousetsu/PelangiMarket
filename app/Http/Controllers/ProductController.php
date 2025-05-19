@@ -13,4 +13,11 @@ class ProductController extends Controller
         $allSukuCadang = Product::where('type', 'SUKU CADANG MOTOR')->get();
         return view('sparepart', compact('allSukuCadang'));
     }
+
+    //fetch aksesoris
+    public function fetchAksesoris()
+    {
+        $allAksesoris = Product::where('type', 'AKSESORIS MOTOR')->get();
+        return view('accessories', compact('allAksesoris'));
+    }
 }

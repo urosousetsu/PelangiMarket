@@ -26,7 +26,7 @@
             <div class="bg-white rounded-lg shadow-md p-4 text-center">
                 <img src="{{ asset('assets/acc.png') }}" alt="accesories" class="w-full h-60 object-cover rounded-md">
                 <h5 class="mt-4 text-lg font-bold">Accesories</h5>
-                <a href="/aksesoris"
+                <a href="{{ route('aksesoris') }}"
                     class="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Selengkapnya</a>
             </div>
         </div>

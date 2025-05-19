@@ -16,10 +16,7 @@
                     <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ $data->name }}</h2>
                     <p class="text-lg text-red-500 font-bold mb-4">Rp {{ number_format($data->price, 0, ',', '.') }}</p>
                     <div class="mt-auto space-y-2">
-                        <button class="w-full bg-red-600 hover:bg-red-500 text-white py-2 rounded-lg">Beli</button>
-                        <button class="w-full border border-red-600 text-red-600 hover:bg-red-100 py-2 rounded-lg">Masukkan
-                            ke
-                            Keranjang</button>
+                        <button class="w-full bg-red-600 hover:bg-red-500 text-white py-2 rounded-lg">Masukkan ke keranjang</button>
                     </div>
                 </div>
             </div>
