@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
@@ -33,12 +34,10 @@ Route::get('/jenis-motor/vario', function () {
 
 Route::get('/keranjang', function () {
     return view('keranjang');
-})->middleware('auth'); 
+})->middleware('auth');
 
-Route::get('/suku-cadang', function () {
-    return view('sparepart');
-})->middleware('auth'); 
+Route::get('/suku-cadang', [ProductController::class, 'fetchSukuCadang'])->middleware('auth')->name('suku-cadang');
 
 Route::get('/aksesoris', function () {
     return view('accessories');
-})->middleware('auth'); 
+})->middleware('auth');
