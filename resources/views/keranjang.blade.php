@@ -11,7 +11,6 @@
       <!-- Produk 1-->
       <div class="cart-item flex items-center justify-between p-4 border rounded-lg">
         <div class="flex items-center gap-4">
-          <input type="checkbox" class="item-check w-5 h-5 text-blue-500" data-id="1">
           <img src="" alt="Produk A" class="w-16 h-16 object-cover rounded-lg ml-4">
           <div>
             <p class="font-medium">Produk A</p>
@@ -28,7 +27,6 @@
       <!-- Produk 2 -->
       <div class="cart-item flex items-center justify-between p-4 border rounded-lg">
         <div class="flex items-center gap-4">
-          <input type="checkbox" class="item-check w-5 h-5 text-blue-500" data-id="2">
           <img src="" alt="Produk A" class="w-16 h-16 object-cover rounded-lg ml-4">
           <div>
             <p class="font-medium">Produk B</p>
@@ -37,7 +35,7 @@
         </div>
         <div class="flex items-center gap-2">
           <button class="decrease px-2 py-1 bg-gray-200 rounded" data-id="2">-</button>
-          <span class="item-qty w-5 text-center" data-id="2">2</span>
+          <span class="item-qty w-5 text-center" data-id="2">1</span>
           <button class="increase px-2 py-1 bg-gray-200 rounded" data-id="2">+</button>
         </div>
       </div>
@@ -49,7 +47,6 @@
     <div class="w-full lg:w-1/3 bg-white p-6 rounded-xl shadow self-start ">
         <h2 class="text-xl font-semibold mb-4">Ringkasan Pembelian</h2>
         <div id="summary-items" class="space-y-2 text-sm">
-            <!-- Item-item akan dimasukkan via JS -->
         </div>
         <hr class="my-2">
         <div class="flex justify-between font-semibold">
@@ -73,18 +70,18 @@
   }
 
   function updateSummary() {
-    const checkedItems = document.querySelectorAll('.item-check:checked');
+    const cartItems = document.querySelectorAll('.cart-item');
     const summaryContainer = document.getElementById('summary-items');
     const summaryTotal = document.getElementById('summary-total');
 
     summaryContainer.innerHTML = '';
     let total = 0;
 
-    checkedItems.forEach(check => {
-      const id = check.getAttribute('data-id');
-      const name = check.closest('.cart-item').querySelector('p.font-medium').textContent;
-      const qty = parseInt(document.querySelector(`.item-qty[data-id="${id}"]`).textContent);
-      const price = parseInt(document.querySelector(`.item-price[data-id="${id}"]`).textContent);
+    cartItems.forEach(item => {
+      const id = item.querySelector('.item-qty').getAttribute('data-id');
+      const name = item.querySelector('p.font-medium').textContent;
+      const qty = parseInt(item.querySelector(`.item-qty[data-id="${id}"]`).textContent);
+      const price = parseInt(item.querySelector(`.item-price[data-id="${id}"]`).textContent);
       const subtotal = qty * price;
       total += subtotal;
 
@@ -134,17 +131,8 @@
     });
   }
 
-  function setupCheckboxes() {
-    document.querySelectorAll('.item-check').forEach(checkbox => {
-      checkbox.addEventListener('change', () => {
-        updateSummary();
-      });
-    });
-  }
-
   window.addEventListener("DOMContentLoaded", () => {
     setupQtyButtons();
-    setupCheckboxes();
     updateTotalItems();
     updateSummary();
   });
