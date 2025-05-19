@@ -77,7 +77,7 @@
                 </div>
             </div>
 
-            <a href="{{ url('/keranjang') }}" class="hover:text-gray-200">Keranjang</a>
+            <a href="{{ route('keranjang') }}" class="hover:text-gray-200">Keranjang</a>
             <form action="{{ route('logout') }}" method="POST" class="inline">
                 @csrf
                 <button type="submit" class="hover:text-gray-200 bg-transparent border-none p-0 m-0 cursor-pointer">

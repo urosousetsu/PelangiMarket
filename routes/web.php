@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -32,10 +34,12 @@ Route::get('/jenis-motor/vario', function () {
     return view('vario');
 });
 
-Route::get('/keranjang', function () {
-    return view('keranjang');
-})->middleware('auth');
+Route::get('/keranjang', [OrderController::class, 'cartIndex'])->middleware('auth')->name('keranjang');
 
 Route::get('/suku-cadang', [ProductController::class, 'fetchSukuCadang'])->middleware('auth')->name('suku-cadang');
+
+Route::post('/store-cart/{product}', [CartController::class, 'store'])->middleware('auth')->name('store-cart');
+
+Route::post('/update-cart/{product}', [CartController::class, 'update'])->middleware('auth')->name('update-cart');
 
 Route::get('/aksesoris', [ProductController::class, 'fetchAksesoris'])->middleware('auth')->name('aksesoris');
