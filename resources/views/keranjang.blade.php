@@ -48,13 +48,24 @@
                 <span>Total</span>
                 <span id="summary-total">Rp 0</span>
             </div>
-            <button class="mt-6 w-full inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                Checkout
-            </button>
+            <form id="checkout-form" action="">
+                @csrf
+                <input type="hidden" name="item" value="{{ json_encode($cart) }}">
+                <button id="checkout-button" type="submit"
+                    class="mt-6 w-full inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                    Checkout
+                </button>
+            </form>
+            <form id="form_submit" action="{{ route('update-status') }}" method="POST">
+                @csrf
+                <input id="json_callback" name="json" type="hidden">
+            </form>
         </div>
 
     </div>
 
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ config('midtrans.clientKey') }}"></script>
     <script>
         function formatRupiah(number) {
             return new Intl.NumberFormat('id-ID', {
@@ -130,6 +141,39 @@
                     }
                 });
             });
+        }
+
+        // ajax order and midtrans
+        const checkoutButton = document.getElementById('checkout-button');
+        checkoutButton.addEventListener('click', async function(event) {
+            event.preventDefault();
+
+            try {
+                const response = await fetch('{{ route('store-order') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                });
+                const token = await response.text();
+                console.log(token);
+                window.snap.pay(token, {
+                    onSuccess: function(result) {
+                        console.log(result);
+                        send_response_to_form(result);
+                    },
+                    onClose: function() {
+                        console.log('customer closed the popup without finishing the payment');
+                    }
+                });
+            } catch (err) {
+                console.log("error");
+            }
+        });
+
+        function send_response_to_form(result) {
+            document.getElementById('json_callback').value = JSON.stringify(result);
+            document.getElementById('form_submit').submit();
         }
 
         window.addEventListener("DOMContentLoaded", () => {

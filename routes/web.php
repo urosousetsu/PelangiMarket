@@ -43,3 +43,7 @@ Route::post('/store-cart/{product}', [CartController::class, 'store'])->middlewa
 Route::post('/update-cart/{product}', [CartController::class, 'update'])->middleware('auth')->name('update-cart');
 
 Route::get('/aksesoris', [ProductController::class, 'fetchAksesoris'])->middleware('auth')->name('aksesoris');
+
+Route::post('/store-order', [OrderController::class, 'store'])->middleware('auth')->name('store-order');
+
+Route::post('/update-status', [OrderController::class, 'update'])->middleware('auth')->name('update-status');
