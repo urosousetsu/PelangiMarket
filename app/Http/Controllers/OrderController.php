@@ -87,7 +87,7 @@ class OrderController extends Controller
 
         if ($json->transaction_status == 'settlement' || $json->transaction_status == 'capture') {
             $order->payment_status = 'Paid';
-            $order->payment_date_time = now();
+            $order->payment_date = now();
             session()->forget('cart');
         } else if ($json->transaction_status == 'pending') {
             $order->payment_status = 'Pending';

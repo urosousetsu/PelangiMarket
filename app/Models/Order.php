@@ -14,7 +14,6 @@ class Order extends Model
         'total_price',
         'payment_status',
         'payment_date',
-        'snap_token',
     ];
 
     public function products()
