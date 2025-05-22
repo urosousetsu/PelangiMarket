@@ -47,3 +47,7 @@ Route::get('/aksesoris', [ProductController::class, 'fetchAksesoris'])->middlewa
 Route::post('/store-order', [OrderController::class, 'store'])->middleware('auth')->name('store-order');
 
 Route::post('/update-status', [OrderController::class, 'update'])->middleware('auth')->name('update-status');
+
+Route::get('/sparepart/search', [ProductController::class, 'searchSparepart'])->middleware('auth')->name('sparepart-search');
+
+Route::get('/aksesoris/search', [ProductController::class, 'searchAksesoris'])->middleware('auth')->name('aksesoris-search');

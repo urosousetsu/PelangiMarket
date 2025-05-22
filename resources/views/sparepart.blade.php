@@ -1,10 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="px-4 py-6 align-content-center text-center">
+    <div class="px-8 py-6 flex items-center justify-between">
         <h1 class="text-3xl font-bold text-black pb-2">
             Suku Cadang
         </h1>
+        <form action="{{ route('sparepart-search') }}" method="GET" class="flex items-center">
+            <input
+                type="text"
+                name="q"
+                placeholder="Cari suku cadang..."
+                class="border border-red-300 rounded-l-lg px-4 py-2 outline-none"
+                value="{{ request('q') }}"
+            >
+            <button
+                type="submit"
+                class="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-r-lg"
+            >
+                Cari
+            </button>
+        </form>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 py-2 px-8">

@@ -7,17 +7,6 @@
             <span class="text-white text-lg font-bold ml-3">PelangiMarket</span>
         </div>
 
-        {{-- Search Bar --}}
-        <div class="hidden md:flex items-center space-x-4">
-            <form action="{{ url('/search') }}" method="GET" class="flex">
-                <input type="text" name="query" placeholder="Cari produk..."
-                    class="px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-red-400">
-                <button type="submit" class="bg-white text-red-600 px-4 py-2 rounded-r-md hover:bg-gray-200">
-                    Cari
-                </button>
-            </form>
-        </div>
-
         {{-- Navigation Links --}}
         <div class="hidden md:flex space-x-6 items-center text-white">
             <a href="{{ url('/') }}" class="hover:text-gray-200">Home</a>
