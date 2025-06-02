@@ -66,7 +66,7 @@
     </div>
 
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="{{ config('midtrans.clientKey') }}"></script>
+        data-client-key="{{ config('midtrans.clientKey') }}" async></script>
     <script>
         function formatRupiah(number) {
             return new Intl.NumberFormat('id-ID', {
@@ -148,26 +148,33 @@
         const checkoutButton = document.getElementById('checkout-button');
         checkoutButton.addEventListener('click', async function(event) {
             event.preventDefault();
+            checkoutButton.disabled = true;
+
+            // Get cart data from hidden input
+            const cartData = document.querySelector('input[name="item"]').value;
 
             try {
                 const response = await fetch('{{ route('store-order') }}', {
                     method: 'POST',
                     headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        cart: JSON.parse(cartData)
+                    })
                 });
                 const token = await response.text();
-                console.log(token);
                 window.snap.pay(token, {
                     onSuccess: function(result) {
-                        console.log(result);
                         send_response_to_form(result);
                     },
                     onClose: function() {
-                        console.log('customer closed the popup without finishing the payment');
+                        checkoutButton.disabled = false;
                     }
                 });
             } catch (err) {
+                checkoutButton.disabled = false;
                 console.log("error");
             }
         });
