@@ -33,6 +33,8 @@ Route::get('/jenis-motor/beat', function () {
 Route::get('/jenis-motor/vario', function () {
     return view('vario');
 });
+Route::get('/reset-password', [App\Http\Controllers\AuthController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [App\Http\Controllers\AuthController::class, 'resetPassword'])->name('password.update');
 
 Route::get('/keranjang', [OrderController::class, 'cartIndex'])->middleware('auth')->name('keranjang');
 

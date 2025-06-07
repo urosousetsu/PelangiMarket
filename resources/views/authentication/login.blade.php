@@ -38,6 +38,9 @@
                     <input type="password" name="password" id="password" required
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                         placeholder="••••••••">
+                    <div class="flex justify-end mt-2">
+                        <a href="{{ route('password.reset') }}" class="text-sm text-red-600 hover:underline">Lupa password?</a>
+                    </div>
                 </div>
                 <button type="submit"
                     class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login</button>
